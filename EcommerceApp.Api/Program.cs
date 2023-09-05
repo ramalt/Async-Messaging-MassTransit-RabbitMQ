@@ -1,4 +1,6 @@
-
+using EcommerceApp.Components.Consumers.Order;
+using EcommerceApp.Contracts.Order.Commands;
+using MassTransit;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,27 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+// MassTransit Configs
+
+builder.Services.AddMassTransit(x =>
+{
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host(new Uri("rabbitmq://localhost"), h =>
+        {
+            h.Username("guest");
+            h.Password("guest");
+        });
+    });
+    // Diğer MassTransit yapılandırmalarını burada ekleyebilirsiniz.
+    x.AddMediator(cfg =>
+{
+    cfg.AddConsumer<SubmitOrderConsumer>();
+    cfg.AddRequestClient<SubmitOrder>();
+});
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -18,7 +41,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
