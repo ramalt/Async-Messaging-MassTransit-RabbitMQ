@@ -8,12 +8,18 @@ var builder = WebApplication.CreateBuilder(args);
 // builder.Services.AddSwaggerGen();
 builder.Services.AddEndpointsApiExplorer();
 
-
+//formatting-style-configs
+builder.Services.TryAddSingleton(KebabCaseEndpointNameFormatter.Instance);
 //MassTransit Config
 builder.Services.AddMassTransit(x =>
 {
+    //Queue and Exchange binding
+    //Adds all consumers from the assembly containing the specified type that are in the same (or deeper) namespace.
+    x.AddConsumersFromNamespaceContaining<SubmitOrderConsumer>();
+
     x.UsingRabbitMq((context, cfg) =>
     {
+        cfg.ConfigureEndpoints(context);
         cfg.Host(new Uri("rabbitmq://localhost"), h =>
         {
             h.Username("guest");
@@ -22,12 +28,8 @@ builder.Services.AddMassTransit(x =>
 
     });
 
-    //Adds all consumers from the assembly containing the specified type that are in the same (or deeper) namespace.
-    x.AddConsumersFromNamespaceContaining<SubmitOrderConsumer>();
 });
 
-//formatting-style-configs
-builder.Services.TryAddSingleton(KebabCaseEndpointNameFormatter.Instance);
 
 var app = builder.Build();
 

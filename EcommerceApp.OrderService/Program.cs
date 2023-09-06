@@ -1,6 +1,7 @@
 using EcommerceApp.Components.Consumers.Order;
 using EcommerceApp.Contracts.Order.Commands;
 using MassTransit;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,7 @@ builder.Services.AddSwaggerGen();
 
 // MassTransit Configs
 
+builder.Services.TryAddSingleton(KebabCaseEndpointNameFormatter.Instance);
 builder.Services.AddMassTransit(x =>
 {
     x.UsingRabbitMq((context, cfg) =>
@@ -24,13 +26,13 @@ builder.Services.AddMassTransit(x =>
             h.Password("guest");
         });
     });
-    // Diğer MassTransit yapılandırmalarını burada ekleyebilirsiniz.
-    x.AddMediator(cfg =>
-{
-    cfg.AddConsumer<SubmitOrderConsumer>();
-    cfg.AddRequestClient<SubmitOrder>();
+    // x.AddConsumer<SubmitOrderConsumer>();
+    x.AddRequestClient<SubmitOrder>(new Uri($"queue:{KebabCaseEndpointNameFormatter.Instance.Consumer<SubmitOrderConsumer>()}"));
+    
+
 });
-});
+
+builder.Services.AddMassTransitHostedService();
 
 var app = builder.Build();
 
