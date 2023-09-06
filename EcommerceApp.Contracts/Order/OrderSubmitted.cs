@@ -1,4 +1,4 @@
-namespace EcommerceApp.Contracts.Order.Events;
+namespace EcommerceApp.Contracts.Order;
 
 public record OrderSubmitted
 {

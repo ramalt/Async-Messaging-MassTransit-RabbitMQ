@@ -1,5 +1,5 @@
-using EcommerceApp.Contracts.Order.Commands;
-using EcommerceApp.Contracts.Order.Events;
+using EcommerceApp.Contracts.Order;
+using EcommerceApp.Contracts.Order;
 using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 

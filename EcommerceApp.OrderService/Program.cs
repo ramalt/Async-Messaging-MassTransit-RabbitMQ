@@ -1,5 +1,5 @@
 using EcommerceApp.Components.Consumers.Order;
-using EcommerceApp.Contracts.Order.Commands;
+using EcommerceApp.Contracts.Order;
 using MassTransit;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
@@ -27,12 +27,11 @@ builder.Services.AddMassTransit(x =>
         });
     });
     // x.AddConsumer<SubmitOrderConsumer>();
-    x.AddRequestClient<SubmitOrder>(new Uri($"queue:{KebabCaseEndpointNameFormatter.Instance.Consumer<SubmitOrderConsumer>()}"));
+    x.AddRequestClient<SubmitOrder>(new Uri($"exchange:{KebabCaseEndpointNameFormatter.Instance.Consumer<SubmitOrderConsumer>()}"));
     
 
 });
 
-builder.Services.AddMassTransitHostedService();
 
 var app = builder.Build();
 

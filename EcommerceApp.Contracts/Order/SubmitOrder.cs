@@ -1,4 +1,4 @@
-namespace EcommerceApp.Contracts.Order.Commands;
+namespace EcommerceApp.Contracts.Order;
 
 public record SubmitOrder
 {
