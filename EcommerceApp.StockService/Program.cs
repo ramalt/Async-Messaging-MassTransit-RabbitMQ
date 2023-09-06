@@ -1,7 +1,5 @@
 ﻿using EcommerceApp.Components.Consumers.Order;
 using MassTransit;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
