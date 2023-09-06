@@ -1,5 +1,4 @@
 using EcommerceApp.Contracts.Order;
-using EcommerceApp.Contracts.Order;
 using MassTransit;
 
 namespace EcommerceApp.Components.Consumers.Order;

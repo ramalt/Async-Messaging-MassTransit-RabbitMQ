@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcommerceApp.OrderService",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcommerceApp.StockService", "EcommerceApp.StockService\EcommerceApp.StockService.csproj", "{52FD8B54-959E-429A-9537-4E9F79C0F8FB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E887EFF8-01ED-4349-BA4F-26E4CFFB5B82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MassTransitMediatRMQ.Components.Test", "Tests\MassTransitMediatRMQ.Components.Test\MassTransitMediatRMQ.Components.Test.csproj", "{9E65F498-236C-480F-926E-3568DE8D2DF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,8 +37,15 @@ Global
 		{52FD8B54-959E-429A-9537-4E9F79C0F8FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52FD8B54-959E-429A-9537-4E9F79C0F8FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52FD8B54-959E-429A-9537-4E9F79C0F8FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E65F498-236C-480F-926E-3568DE8D2DF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E65F498-236C-480F-926E-3568DE8D2DF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E65F498-236C-480F-926E-3568DE8D2DF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E65F498-236C-480F-926E-3568DE8D2DF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9E65F498-236C-480F-926E-3568DE8D2DF4} = {E887EFF8-01ED-4349-BA4F-26E4CFFB5B82}
 	EndGlobalSection
 EndGlobal
