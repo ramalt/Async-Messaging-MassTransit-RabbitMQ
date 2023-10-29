@@ -34,6 +34,6 @@ This microservices project comprises two main services: **OrderService** and **S
 ## Approaches
 
 - **Modular Approach:** Components are organized into separate class libraries, facilitating project maintenance and development.
-- **Standardization:** The Contracts library standardizes events and messages, ensuring reliable communication.
+- **Standardization :** The Contracts library standardizes events and messages, ensuring reliable communication.
 - **Processing and Response:** Components like **SubmitOrderConsumer.cs** handle incoming events and trigger new events as a result, enabling services to interact effectively.
 
